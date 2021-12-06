@@ -1,0 +1,7 @@
+public class CasterMinion extends Minion {
+  // Caster minion constructor, extends Minion class with no unique methods.
+  public CasterMinion(int health, int attackDamage, int abilityPower, int armor, int magicResist, double attackSpeed, int cdr,int critChance, int movementSpeed, String type, int gold) {
+    super(health, attackDamage, abilityPower, armor, magicResist, attackSpeed, cdr, critChance, movementSpeed, type, gold);
+  }
+
+}
