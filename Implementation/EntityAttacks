@@ -1,0 +1,66 @@
+class EntityAttacks{
+  
+  // Attack method for an entity to attack another.
+  public void entityAttack(EntityStats attacker, EntityStats target){
+
+    // Calculates damage done to target and prints if attack is a minion
+    if (attacker instanceof Minion) {
+      Minion minionNew = (Minion)attacker;
+      // If target has no armor reduce target's HP in full damage
+      if (target.getAR() == 0) {
+        
+        int newHP = (target.getHP() - attacker.getAD());
+        target.setHP(newHP);
+        
+        System.out.println("The " + minionNew.getType() + " minion attacks the target for " + attacker.getAD() + " damage. The target has " + target.getHP() + " health left.");
+      }
+      // If target has armor reduce target's HP after reducing damage by armor calculations
+      else if (target.getAR() >= 0) {
+        float d1 = 100;
+        float reducedDamage = (attacker.getAD() * (d1/(d1+target.getAR())));
+        int reducedDamageInt = (Math.round(reducedDamage));
+        int howMuchReduced = (attacker.getAD() - reducedDamageInt);
+        int newHP = (target.getHP() - reducedDamageInt);
+        target.setHP(newHP);
+
+        System.out.println("The " + minionNew.getType() + " minion attacks the target for " + reducedDamageInt + " damage, as " + howMuchReduced + " damage was reduced by armor. The target has " + target.getHP() + " health left.");
+      }
+    }
+    // Prints out less detailed message if not a minion (changeable for other entities), calculations are the same (unless the damage is ability power based. However, all minions do physical damage so it was ignored.)
+    else {
+      if (target.getAR() == 0) {
+        
+        int newHP = (target.getHP() - attacker.getAD());
+        target.setHP(newHP);
+        
+        System.out.println("The attacker attacks the target for " + attacker.getAD() + " damage. The target has " + target.getHP() + " health left.");
+      }
+      else if (target.getAR() >= 0) {
+        float d1 = 100;
+        float reducedDamage = (attacker.getAD() * (d1/(d1+target.getAR())));
+        int reducedDamageInt = (Math.round(reducedDamage));
+        int howMuchReduced = (attacker.getAD() - reducedDamageInt);
+        int newHP = (target.getHP() - reducedDamageInt);
+        target.setHP(newHP);
+
+        System.out.println("The attacker attacks the target for " + reducedDamageInt + " damage, as " + howMuchReduced + " damage was reduced by armor. The target has " + target.getHP() + " health left.");
+      }
+    }
+    // If target is a tower and the attack left the tower at less than 4000 HP, tower platings will break, which buffs the tower by 45 armor (not implemented)
+    /*
+      if (target instanceof Tower) {
+        Tower towerNew = (Tower)target;
+        boolean platingBrokenCheck = towerNew.getPlatingBroke();
+        if (platingBrokenCheck = false) {
+          if (target.getHP() <= 4000) {
+            int armorBuff = (target.getAR() + 45);
+            target.setAR(armorBuff);
+            towerNew.setPlatingBroke(true);
+            System.out.println("The tower plating was broken, granting the tower a buff of 45 armor permanently.");
+        }
+      }
+    }
+  */
+  
+  }
+}
