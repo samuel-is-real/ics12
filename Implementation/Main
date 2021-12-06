@@ -1,0 +1,54 @@
+/* 
+Author: Samuel Z.
+Date: 2021-11-26
+Purpose: Implementation of Minion and Tower classes, demonstrate relationship between classes (inheritance between Minion and the other minion subclasses) and with class of someone else (DummyPlayer)
+*/
+import java.util.*;
+class Main {
+  public static void main (String[] args) {
+    // Initializing each variable. Classes to test: Minion (caster, melee, siege, super), Tower, DummyPlayer, EntityAttacks, EntityStats
+
+    DummyPlayer player1 = new DummyPlayer();
+
+    EntityAttacks dmgCalc = new EntityAttacks();
+
+    CasterMinion caster1 = new CasterMinion(296, 24, 0, 0, 0, 0.667, 0, 0, 325, "Caster", 14);
+    
+    MeleeMinion melee1 = new MeleeMinion(296, 12, 0, 0, 0, 1.25, 0, 0, 325, "Melee", 21);
+
+    SiegeMinion siege1 = new SiegeMinion(912, 41, 0, 0, 0, 1, 0, 0, 325, "Siege", 60);
+
+    SuperMinion super1 = new SuperMinion(296, 2300, 0, 0, 0, 0.85, 0, 0, 325, "Super", 60);
+
+    Tower tower1 = new Tower(5000, 152, 0, 40, 40, 0.833, 0, 0, 0, 300, false);
+
+    // Shows info on all minions
+    System.out.println(caster1);
+    System.out.println(melee1);
+    System.out.println(siege1);
+    System.out.println(super1);
+
+    // Calculates damage done if a minion attacks another minion or a tower
+    dmgCalc.entityAttack(caster1,melee1);
+    dmgCalc.entityAttack(super1, tower1);
+
+    // Dummy player class with only 3 variables to test relationship between minions and player. If minion dies, player should get gold. Other varibales of player not implemented as it is someone elses's class and this is only to test if Minion / Player relationship works.
+    player1.showGold();
+    caster1.setHP(0);
+    caster1.minionDie(caster1,player1);
+
+    player1.showGold();
+    melee1.setHP(0);
+    melee1.minionDie(melee1,player1);
+
+    player1.showGold();
+    siege1.setHP(0);
+    siege1.minionDie(siege1,player1);
+
+    player1.showGold();
+    super1.setHP(0);
+    super1.minionDie(super1,player1);
+    player1.showGold();
+
+  }
+}
