@@ -1,0 +1,34 @@
+class DummyPlayer {
+  // Dummy Player class to test if the minion class works
+  private int playerGold;
+  
+  public int getPlayerGold() {
+    return playerGold;
+  }
+  
+  public void addGold(int i) {
+    playerGold += i;
+  }
+  
+  public String toString () {
+      String ret =
+        "\nPlayer's current gold is: " + this.getPlayerGold();
+      return ret;
+  }
+  /*
+  -creepScore : int
+  -visionScore: int
+  -gold : int
+  -worth : int
+  -bounty : int
+  -kill : int
+  -deaths : int
+  -assists : int
+  -summonerSpells : SummonerSpell[2]
+  -primaryRune : String
+  -secondaryRune : String
+  -items : ArrayList<Item>
+  -hasUlt : boolean
+*/
+
+}
