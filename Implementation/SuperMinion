@@ -1,0 +1,6 @@
+class SuperMinion extends Minion{
+    // Constructor
+    public SuperMinion(int health, int attackDamage, int abilityPower, int armor, int magicResist, double attackSpeed, int cdr,int critchance, int movementSpeed, String type, int gold) {
+    super(health, attackDamage, abilityPower, armor, magicResist, attackSpeed, cdr, critchance, movementSpeed, type, gold);
+  }
+}
